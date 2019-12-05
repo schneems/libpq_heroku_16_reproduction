@@ -1,0 +1,6 @@
+testcase:
+  build: .
+  links:
+    - db
+db:
+  image: postgres:11.5-alpine
