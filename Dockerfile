@@ -1,4 +1,4 @@
-FROM heroku/heroku:16
+FROM heroku/heroku:16-build
 
 RUN rm /etc/apt/preferences.d/pgdg.pref
 RUN apt-get update -y
