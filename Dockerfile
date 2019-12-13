@@ -9,5 +9,7 @@ RUN apt-get install patchelf -y
 
 RUN patchelf --set-rpath "/tmp/usr/lib/x86_64-linux-gnu/:$(patchelf --print-rpath /var/lib/gems/2.3.0/extensions/x86_64-linux/2.3.0/pg-1.1.4/pg_ext.so)" /var/lib/gems/2.3.0/extensions/x86_64-linux/2.3.0/pg-1.1.4/pg_ext.so
 ENV LD_LIBRARY_PATH="${PWD}/deb_dir/usr/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH"
+
+RUN ldd /var/lib/gems/2.3.0/extensions/x86_64-linux/2.3.0/pg-1.1.4/pg_ext.so | grep libpq
 COPY testcase.rb .
 CMD ["ruby", "testcase.rb"]
